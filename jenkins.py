@@ -90,11 +90,10 @@ class Job(object):
     def enabled(self):
         return '<disabled>false</disabled>' in self.config
 
-    @property
-    def info(self):
+    def info(self, depth=0):
         '''Fetch job information.'''
 
-        url = 'job/%s/api/json?depth=0' % quote(self.name)
+        url = 'job/{0}/api/json?depth={1}'.format(quote(self.name), depth)
         err = 'job "%s" does not exist' % self.name
         return self.server.json(url, errmsg=err)
 
