@@ -175,7 +175,7 @@ class Build(object):
 
     def stop(self):
         url = 'job/%s/%d/stop' % (self.job.name, self.number)
-        return self.job.post(url)
+        return self.job.server.post(url)
 
 
 class Server(object):
