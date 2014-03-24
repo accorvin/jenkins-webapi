@@ -230,6 +230,13 @@ class Jenkins(object):
         return res
 
     @property
+    def queue(self):
+      '''Get the items in the build queue.'''
+      url = 'queue/api/json'
+      res = self.server.json(url, 'unable to retrieve build queue')
+      return res
+
+    @property
     def jobs(self):
         return [Job(i['name'], self.server) for i in self.info['jobs']]
 
