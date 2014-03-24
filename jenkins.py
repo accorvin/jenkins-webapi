@@ -19,6 +19,9 @@ class Job(object):
         self.name = name
         self.server = server
 
+    def url(self):
+      return '{0}job/{1}'.format(self.server.url, self.name)
+
     def __str__(self):
         return 'job:%r' % (self.name)
 
